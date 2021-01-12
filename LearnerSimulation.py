@@ -120,9 +120,9 @@ def get_upload(g_new, g_old, dev):
         param_num += torch.numel(g_layer)
 
     for idx, g_layer in enumerate(upload_gradient):   
-         g_new[idx] = g_new[idx] + g_layer
+         g_old[idx] = g_old[idx] + g_layer
 
-    return g_new, int(upload_num) / param_num
+    return g_old, int(upload_num) / param_num
 
 
 def test_model(rank, model, test_data, dev):
